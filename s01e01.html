@@ -1,34 +1,57 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualization of French Female Writers</title>
-  </head>
-  <body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        iframe, .flourish-embed {
+            margin: 20px 0;
+            display: block;
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
     <h1>Visualization of French Female Writers</h1>
-    
+
     <p>
-      Link to the Wikidata Query: 
-      <a href="https://query.wikidata.org/#SELECT%20DISTINCT%20%3Fwriter%20%3FwriterLabel%20%3FbirthDate%20%3FbirthPlaceLabel%20%3Fimage%20%3FliteraryMovementLabel%0AWHERE%20%7B%0A%20%20%23%20Filter%20for%20female%20writers%0A%20%20%3Fwriter%20wdt%3AP31%20wd%3AQ5%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Instance%20of%20human%20%28Q5%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP21%20wd%3AQ6581072%3B%20%20%20%20%20%20%20%20%23%20Gender%3A%20female%20%28Q6581072%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP106%20wd%3AQ36180%3B%20%20%20%20%20%20%20%20%20%23%20Occupation%3A%20writer%20%28Q36180%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP27%20wd%3AQ142.%20%20%20%20%20%20%20%20%20%20%20%20%23%20Country%20of%20citizenship%3A%20France%20%28Q142%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20birth%20date%20and%20place%20of%20birth%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP569%20%3FbirthDate.%20%7D%20%20%20%20%23%20Birth%20date%20%28P569%29%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP19%20%3FbirthPlace.%20%7D%20%20%20%20%23%20Place%20of%20birth%20%28P19%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20image%20of%20the%20writer%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP18%20%3Fimage.%20%7D%20%20%20%20%20%20%20%20%20%23%20Image%20%28P18%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20literary%20movement%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP136%20%3FliteraryMovement.%20%7D%20%23%20Literary%20movement%20or%20genre%20%28P136%29%0A%0A%20%20%23%20Retrieve%20human-readable%20labels%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0ALIMIT%2050%0A">
-        https://query.wikidata.org
-      </a>
+        Link to the Wikidata Query: 
+        <a href="https://query.wikidata.org/#SELECT%20DISTINCT%20%3Fwriter%20%3FwriterLabel%20%3FbirthDate%20%3FbirthPlaceLabel%20%3Fimage%20%3FliteraryMovementLabel%0AWHERE%20%7B%0A%20%20%23%20Filter%20for%20female%20writers%0A%20%20%3Fwriter%20wdt%3AP31%20wd%3AQ5%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Instance%20of%20human%20%28Q5%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP21%20wd%3AQ6581072%3B%20%20%20%20%20%20%20%20%23%20Gender%3A%20female%20%28Q6581072%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP106%20wd%3AQ36180%3B%20%20%20%20%20%20%20%20%20%23%20Occupation%3A%20writer%20%28Q36180%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP27%20wd%3AQ142.%20%20%20%20%20%20%20%20%20%20%20%20%23%20Country%20of%20citizenship%3A%20France%20%28Q142%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20birth%20date%20and%20place%20of%20birth%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP569%20%3FbirthDate.%20%7D%20%20%20%20%23%20Birth%20date%20%28P569%29%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP19%20%3FbirthPlace.%20%7D%20%20%20%20%23%20Place%20of%20birth%20%28P19%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20image%20of%20the%20writer%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP18%20%3Fimage.%20%7D%20%20%20%20%20%20%20%20%20%23%20Image%20%28P18%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20literary%20movement%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP136%20%3FliteraryMovement.%20%7D%20%23%20Literary%20movement%20or%20genre%20%28P136%29%0A%0A%20%20%23%20Retrieve%20human-readable%20labels%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0ALIMIT%2050%0A">
+            https://query.wikidata.org
+        </a>
     </p>
 
-    <iframe style="width: 80vw; height: 50vh; border: none;" 
-            src="https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3Fwriter%20%3FwriterLabel%20%3FbirthDate%20%3FbirthPlaceLabel%20%3Fimage%20%3FliteraryMovementLabel%0AWHERE%20%7B%0A%20%20%23%20Filter%20for%20female%20writers%0A%20%20%3Fwriter%20wdt%3AP31%20wd%3AQ5%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Instance%20of%20human%20%28Q5%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP21%20wd%3AQ6581072%3B%20%20%20%20%20%20%20%20%23%20Gender%3A%20female%20%28Q6581072%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP106%20wd%3AQ36180%3B%20%20%20%20%20%20%20%20%20%23%20Occupation%3A%20writer%20%28Q36180%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP27%20wd%3AQ142.%20%20%20%20%20%20%20%20%20%20%20%20%23%20Country%20of%20citizenship%3A%20France%20%28Q142%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20birth%20date%20and%20place%20of%20birth%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP569%20%3FbirthDate.%20%7D%20%20%20%20%23%20Birth%20date%20%28P569%29%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP19%20%3FbirthPlace.%20%7D%20%20%20%20%23%20Place%20of%20birth%20%28P19%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20image%20of%20the%20writer%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP18%20%3Fimage.%20%7D%20%20%20%20%20%20%20%20%20%23%20Image%20%28P18%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20literary%20movement%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP136%20%3FliteraryMovement.%20%7D%20%23%20Literary%20movement%20or%20genre%20%28P136%29%0A%0A%20%20%23%20Retrieve%20human-readable%20labels%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0ALIMIT%2050%0A" 
-            referrerpolicy="origin" 
-            sandbox="allow-scripts allow-same-origin allow-popups">
+    <!-- First Chart: Wikidata Embed -->
+    <iframe 
+        src="https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3Fwriter%20%3FwriterLabel%20%3FbirthDate%20%3FbirthPlaceLabel%20%3Fimage%20%3FliteraryMovementLabel%0AWHERE%20%7B%0A%20%20%23%20Filter%20for%20female%20writers%0A%20%20%3Fwriter%20wdt%3AP31%20wd%3AQ5%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Instance%20of%20human%20%28Q5%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP21%20wd%3AQ6581072%3B%20%20%20%20%20%20%20%20%23%20Gender%3A%20female%20%28Q6581072%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP106%20wd%3AQ36180%3B%20%20%20%20%20%20%20%20%20%23%20Occupation%3A%20writer%20%28Q36180%29%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP27%20wd%3AQ142.%20%20%20%20%20%20%20%20%20%20%20%20%23%20Country%20of%20citizenship%3A%20France%20%28Q142%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20birth%20date%20and%20place%20of%20birth%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP569%20%3FbirthDate.%20%7D%20%20%20%20%23%20Birth%20date%20%28P569%29%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP19%20%3FbirthPlace.%20%7D%20%20%20%20%23%20Place%20of%20birth%20%28P19%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20image%20of%20the%20writer%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP18%20%3Fimage.%20%7D%20%20%20%20%20%20%20%20%20%23%20Image%20%28P18%29%0A%0A%20%20%23%20Optional%3A%20Retrieve%20literary%20movement%0A%20%20OPTIONAL%20%7B%20%3Fwriter%20wdt%3AP136%20%3FliteraryMovement.%20%7D%20%23%20Literary%20movement%20or%20genre%20%28P136%29%0A%0A%20%20%23%20Retrieve%20human-readable%20labels%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0ALIMIT%2050%0A" 
+        referrerpolicy="origin" 
+        sandbox="allow-scripts allow-same-origin allow-popups">
     </iframe>
 
-      <div class="flourish-embed flourish-map" data-src="visualisation/21300815">
+    <!-- Second Chart: Flourish Embed -->
+    <h2>Flourish Map Visualization</h2>
+    <div class="flourish-embed flourish-map" data-src="visualisation/21300815">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
         <noscript>
-            <img src="https://public.flourish.studio/visualisation/21300815/thumbnail" width="100%" alt="map visualization" />
+            <img src="https://public.flourish.studio/visualisation/21300815/thumbnail" alt="map visualization" />
         </noscript>
     </div>
-    
-    <p>
-      Visualization made with <a href="https://www.rawgraphs.io/">RAWGraphs</a>
-      <img src="femalewriterfrench.jpg" alt="RAWGraphs Visualization">
-    </p>
-  </body>
+
+    <!-- RAWGraphs Visualization -->
+    <h2>RAWGraphs Visualization</h2>
+    <img src="femalewriterfrench.jpg" alt="RAWGraphs Visualization">
+</body>
 </html>
